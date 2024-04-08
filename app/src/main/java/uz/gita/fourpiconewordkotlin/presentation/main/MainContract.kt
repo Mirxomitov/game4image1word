@@ -19,9 +19,10 @@ interface MainContract {
         fun clearHelpersBackground()
         fun setLevel(level: Int)
         fun setCoins(coins: Int)
-        fun openDialog()
+        fun showConvertDialog()
         fun openNoEnoughCoinsDialog()
         fun openFinalDialog()
+        fun showHelperDialog(message : String)
     }
 
     interface Model {
@@ -46,7 +47,7 @@ interface MainContract {
     }
 
     interface Presenter {
-        fun onClickHelp()
+        fun onClickHelp(isSecondTime : Boolean)
         fun onClickNext()
         fun onClickHome()
         fun saveLevel()

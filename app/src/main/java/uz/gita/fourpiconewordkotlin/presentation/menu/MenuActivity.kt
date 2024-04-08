@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.cardview.widget.CardView
 import uz.gita.fourpiconewordkotlin.R
+import uz.gita.fourpiconewordkotlin.presentation.InfoActivity
 import uz.gita.fourpiconewordkotlin.presentation.main.MainActivity
 
 class MenuActivity : AppCompatActivity(), MenuContract.View {
@@ -17,7 +17,6 @@ class MenuActivity : AppCompatActivity(), MenuContract.View {
     private var menuImages = mutableListOf<ImageView>()
     private lateinit var level: TextView
     private lateinit var coins: TextView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +31,6 @@ class MenuActivity : AppCompatActivity(), MenuContract.View {
     private fun findTexts() {
         level = findViewById(R.id.menuLevel)
         coins = findViewById(R.id.menuCoins)
-
     }
 
     private fun findImages() {
@@ -50,6 +48,11 @@ class MenuActivity : AppCompatActivity(), MenuContract.View {
 
         findViewById<AppCompatImageButton>(R.id.btnClear).setOnClickListener {
             presenter.clearResult()
+        }
+
+
+        findViewById<ImageView>(R.id.btnInfo).setOnClickListener {
+            startActivity(Intent(this, InfoActivity::class.java))
         }
     }
 

@@ -1,5 +1,6 @@
 package uz.gita.fourpiconewordkotlin.presentation.main
 
+import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -12,8 +13,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import uz.gita.fourpiconewordkotlin.R
 import uz.gita.fourpiconewordkotlin.presentation.finaldialog.FinalDialog
+
 
 class MainActivity : AppCompatActivity(), MainContract.View {
 
@@ -29,6 +34,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     private lateinit var level: TextView
     private lateinit var builder: AlertDialog.Builder
     private lateinit var noEnoughCoinsDialog: AlertDialog.Builder
+    private lateinit var answerHelper: AlertDialog.Builder
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,9 +61,12 @@ class MainActivity : AppCompatActivity(), MainContract.View {
                 dialog.dismiss()
             }
 
+        answerHelper = AlertDialog.Builder(this).setTitle("Yordam").setCancelable(false)
+            .setNeutralButton("Yopish") { dialog, _ -> dialog.dismiss() }
+
         noEnoughCoinsDialog = AlertDialog.Builder(this)
         noEnoughCoinsDialog
-            .setMessage("Sizda hali 60 coin to'planmagan")
+            .setMessage("Sizda hali 60 tanga to'planmagan")
             .setTitle("Yordam olish")
             .setPositiveButton("Yopish") { dialog, _ ->
                 dialog.dismiss()
@@ -66,10 +75,31 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         presenter = MainPresenter(this)
     }
 
+    override fun onResume() {
+        super.onResume()
+        growUpImages()
+    }
+
+    private fun growUpImages() {
+        images.forEach { image ->
+            image.animate()
+                .scaleX(1f)
+                .scaleY(1f)
+                .setDuration(1000)
+        }
+    }
+
     private fun initOtherButtons() {
         helpButton = findViewById(R.id.btnHelp)
         helpButton.setOnClickListener {
-            presenter.onClickHelp()
+            helpButton.isEnabled = false
+
+            lifecycleScope.launch {
+                delay(1000)
+                helpButton.isEnabled = true
+            }
+
+            presenter.onClickHelp(false)
         }
 
         clearButton = findViewById(R.id.btnClear)
@@ -146,12 +176,19 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         finish()
     }
 
+    @SuppressLint("Recycle")
     override fun openLevelDialog(isFinish: Boolean) {
-
         viewBack = LayoutInflater.from(this).inflate(R.layout.my_dialog, null, false)
         dialogBack = AlertDialog.Builder(this).setView(viewBack).setCancelable(false).create()
 
         viewBack.findViewById<AppCompatButton>(R.id.btnNext).setOnClickListener {
+            val coin = coins.text.toString().toInt()
+            val valueAnimator = ValueAnimator.ofInt(coin, coin + 50)
+            valueAnimator.addUpdateListener {
+                coins.text = it.animatedValue.toString()
+            }
+            valueAnimator.start()
+
             presenter.onClickNext()
             dialogBack.dismiss()
         }
@@ -163,7 +200,6 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
         dialogBack.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialogBack.show()
-
     }
 
     override fun fixAnswerLength(length: Int) {
@@ -223,7 +259,14 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         images += findViewById<ImageView>(R.id.question2)
         images += findViewById<ImageView>(R.id.question3)
         images += findViewById<ImageView>(R.id.question4)
+
+        images.forEach {
+            it.scaleX = 0.8f
+            it.scaleY = 0.8f
+            // grow up will be called
+        }
     }
+
 
 
     override fun setLevel(level: Int) {
@@ -234,7 +277,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         this.coins.text = coins.toString()
     }
 
-    override fun openDialog() {
+    override fun showConvertDialog() {
         builder.show()
     }
 
@@ -248,5 +291,10 @@ class MainActivity : AppCompatActivity(), MainContract.View {
             presenter.clearResult()
         }
         dialog.show(supportFragmentManager, "")
+    }
+
+    override fun showHelperDialog(message: String) {
+        answerHelper.setMessage(message)
+        answerHelper.show()
     }
 }

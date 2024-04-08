@@ -2,12 +2,14 @@
     <string name="app_name">4 rasm 1 so\'z</string>
     <string name="level">Level:</string>
     <string name="bosqich">Bosqich:</string>
-    <string name="_4_rasm_bir_so_z">4 Rasm\nBir So\'z</string>
-    <string name="keyingi">KEYINGI</string>
+    <string name="keyingi">Keyingi</string>
     <string name="menu">Menu</string>
     <string name="boshqichlar_tugadi">Boshqichlar tugadi</string>
-    <string name="finalMessage">Tabriklaymiz! Siz barcha bosqichlarni muvaffaqiyatli bosib o\'tdingiz. \n\nBosqichlarni qayta o\'ynash uchun \"qayta o\'ynash\" tugmasini bosing</string>
+    <string name="finalMessage">Tabriklaymiz! Siz barcha bosqichlarni muvaffaqiyatli bosib o\'tdingiz. Yana birinchi bosqichdan boshlash uchun \"qayta o\'ynash\" tugmasini bosing</string>
     <string name="play">Play</string>
     <string name="keyingi_bosqichga_o_tdingiz">Keyingi bosqichga o\'tdingiz !</string>
     <string name="qayta_o_ynash">Qayta o\'ynash</string>
+    <string name="_4_rasm_bir_so_z">4 Rasm\nBir So\'z</string>
+    <string name="info">\tUshbu o\'yinda siz rasmlarni birlashtirib turuvchi so\'zni topishingiz talab etiladi. So\'zlarni topishga qiynalsangiz yordam olishingiz mumkin bo\'ladi. Har bir o\'yindan so\'ng sizga tangalar beriladi, tangalarni yordam olishga ishlatishingiz mumkin. O\'yin GITA Dasturchilar Akademiyasi o\'quvchisi tomonidan tayyorlangan.</string>
+    <string name="callUs">Biz bilan bo\'g\'lanish</string>
 </resources>

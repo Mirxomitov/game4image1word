@@ -36,7 +36,7 @@ class MyShared private constructor(context: Context) {
     }
 
     fun getCoins(): Int {
-        return pref.getInt("COINS", 100)
+        return pref.getInt("COINS", 150)
     }
 
     fun saveCoins(currentCoins: Int) {

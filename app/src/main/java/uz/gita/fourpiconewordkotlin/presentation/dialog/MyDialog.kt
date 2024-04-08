@@ -11,7 +11,7 @@ import uz.gita.fourpiconewordkotlin.R
 
 class MyDialog : DialogFragment(), MyDialogContract.View {
 
-    lateinit var listener: Unit
+    private lateinit var listener: Unit
     private lateinit var presenter: MyDialogContract.Presenter
 
     override fun onCreateView(

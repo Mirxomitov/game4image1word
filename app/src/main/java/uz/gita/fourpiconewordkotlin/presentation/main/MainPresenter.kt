@@ -1,11 +1,12 @@
 package uz.gita.fourpiconewordkotlin.presentation.main
 
+import android.util.Log
+
 class MainPresenter(private var view: MainContract.View) : MainContract.Presenter {
 
     private var model: MainContract.Model = MainModel()
     private var userAnswers = mutableListOf<Int>()
-    private var helperAnswers =
-        mutableListOf<Int>() // help orqali olingan javoblarni o'chirmaslik uchun
+    private var helperAnswers = mutableListOf<Int>() // help orqali olingan javoblarni o'chirmaslik uchun
 
     init {
         newGame()
@@ -39,11 +40,11 @@ class MainPresenter(private var view: MainContract.View) : MainContract.Presente
     }
 
     override fun onClickYes() {
-        if (model.canConvertCoinsToHelper()) {
-            model.convertCoinsToHelper()
-            view.setCoins(model.getCoins())
-        }
-        return onClickHelp()
+
+        model.convertCoinsToHelper()
+        view.setCoins(model.getCoins())
+
+        return onClickHelp(true)
     }
 
     override fun onClickClearButton() {
@@ -73,19 +74,39 @@ class MainPresenter(private var view: MainContract.View) : MainContract.Presente
         model.saveHelperCount()
     }
 
-    override fun onClickHelp() {
-        if (model.getHelperCount() <= 0) {
-            if (model.canConvertCoinsToHelper()) {
-                view.openDialog()
-            } else {
-                view.openNoEnoughCoinsDialog()
+    override fun onClickHelp(isSecondTime: Boolean) {
+        val index = userAnswers.indexOf(-1)
+
+        if (index == -1) {
+            for (i in 0 until model.getCurrentQuestion().answer.length) {
+                val userLetter = model.getCurrentQuestion().variant[userAnswers[i]]
+                if (userLetter != model.getCurrentQuestion().answer[i]) {
+                    if (isSecondTime) {
+                        view.showHelperDialog("${i + 1} - dagi $userLetter harfni ${model.getCurrentQuestion().answer[i]} ga almashtiring")
+                        model.decreaseHelperCount()
+                    } else if (model.getHelperCount() <= 0) {
+                        if (model.canConvertCoinsToHelper()) {
+                            view.showConvertDialog()
+                        } else {
+                            view.openNoEnoughCoinsDialog()
+                        }
+                    }
+                    break
+                }
             }
             return
         }
 
-        val index = userAnswers.indexOf(-1)
-        if (index == -1) {
 
+        Log.d("TTT", "onClickHelp: index = $index")
+        Log.d("TTT", "onClickHelp: userAnswers = $userAnswers")
+
+        if (model.getHelperCount() <= 0) {
+            if (model.canConvertCoinsToHelper()) {
+                view.showConvertDialog()
+            } else {
+                view.openNoEnoughCoinsDialog()
+            }
             return
         }
 
@@ -99,11 +120,14 @@ class MainPresenter(private var view: MainContract.View) : MainContract.Presente
         userAnswers[index] = answerHelpIndex
         view.invisibleVariant(answerHelpIndex)
 
-
         model.decreaseHelperCount()
         if (index == userAnswers.size - 1) {
             if (isWin()) {
-                view.openLevelDialog(model.isFinish())
+                if (model.lastLevel()) {
+                    view.openFinalDialog()
+                } else {
+                    view.openLevelDialog(true)
+                }
             }
         }
     }
@@ -116,7 +140,7 @@ class MainPresenter(private var view: MainContract.View) : MainContract.Presente
         view.setLevel(model.getLevel())
         view.setCoins(model.getCoins())
         clearUserAnswers()
-        helperAnswers.clear()
+        helperAnswers.clear()   
         fillAnswerList()
         view.clearAnswersText()
         view.clearHelpersBackground()
@@ -178,4 +202,8 @@ class MainPresenter(private var view: MainContract.View) : MainContract.Presente
         model.clearResult()
         newGame()
     }
+}
+
+fun logger(msg: String) {
+    Log.d("TTT", msg)
 }

@@ -7,7 +7,7 @@ class MenuPresenter(private val view: MenuContract.View) : MenuContract, MenuCon
         model = MenuModel()
         view.showImages(model.getImages())
         view.updateCoins(model.getCoins().toString())
-        view.updateLevel("Bosqich: " + model.getLevel())
+        view.updateLevel("${model.getLevel()}")
     }
 
     override fun clearResult() {
@@ -23,6 +23,6 @@ class MenuPresenter(private val view: MenuContract.View) : MenuContract, MenuCon
     }
 
     override fun setLevel() {
-        view.updateLevel("Bosqich: " + model.getLevel().toString())
+        view.updateLevel("${model.getLevel()}")
     }
 }
