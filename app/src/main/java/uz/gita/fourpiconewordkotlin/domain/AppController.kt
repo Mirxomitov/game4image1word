@@ -10,7 +10,7 @@ import java.util.Random
 class AppController private constructor() {
     companion object {
         private val LETTERS = "QWERTYUIOPASDFGHJKLZXCVBNM".toList()
-        private val ANSWER_BUTTON_LENGTH = 12
+        private const val ANSWER_BUTTON_LENGTH = 12
         private lateinit var controller: AppController
         fun init() {
             controller = AppController()
