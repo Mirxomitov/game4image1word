@@ -10,11 +10,12 @@
 
     <style name="Button.Answer">
         <item name="android:background">@drawable/bg_letter_answer</item>
-
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_margin">2dp</item>
     </style>
 
     <style name="Button.Variant">
         <item name="android:background">@drawable/bg_letter_variant</item>
-        <item name="android:textColor">@color/black</item>
     </style>
 </resources>

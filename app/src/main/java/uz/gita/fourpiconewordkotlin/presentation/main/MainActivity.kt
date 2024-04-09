@@ -149,7 +149,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     override fun showHelperAnswer(index: Int, letter: String) {
         answerButtons[index].text = letter
-        answerButtons[index].setBackgroundResource(R.color.blue)
+        answerButtons[index].setBackgroundResource(R.drawable.bg_letter_variant)
     }
 
     override fun removeFromAnswer(index: Int) {
@@ -168,7 +168,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     override fun clearHelpersBackground() {
         for (i in answerButtons.indices) {
-            answerButtons[i].setBackgroundResource(R.color.green)
+            answerButtons[i].setBackgroundResource(R.drawable.bg_letter_answer)
         }
     }
 

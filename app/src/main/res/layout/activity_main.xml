@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context=".presentation.main.MainActivity">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#044578"
-        android:orientation="vertical">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/backgroundColor"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/btnBack"
@@ -87,185 +89,93 @@
             </androidx.cardview.widget.CardView>
         </FrameLayout>
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_weight="1.4"
-            android:orientation="vertical">
+    </com.google.android.material.appbar.AppBarLayout>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="4dp"
-                android:layout_weight="1">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/question1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_image"
-                    android:foreground="@drawable/fg_image"
-                    android:padding="4dp"
-                    android:scaleType="centerCrop"
-                    tools:src="@drawable/apple" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/question2"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_image"
-                    android:foreground="@drawable/fg_image"
-                    android:padding="4dp"
-                    android:scaleType="centerCrop"
-                    tools:src="@drawable/apple" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="4dp"
-                android:layout_weight="1">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/question3"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_image"
-                    android:foreground="@drawable/fg_image"
-                    android:padding="4dp"
-                    android:scaleType="centerCrop"
-                    tools:src="@drawable/apple" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/question4"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_image"
-                    android:foreground="@drawable/fg_image"
-                    android:padding="4dp"
-                    android:scaleType="centerCrop"
-                    tools:src="@drawable/gates2" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:background="#044578"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/answerButtons"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/variantButtons1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:gravity="center">
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/variantButtons2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center">
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
-
-                <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <FrameLayout
+    <LinearLayout
+        android:id="@+id/imagesContainer"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="12dp"
+        android:orientation="vertical"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toBottomOf="@id/appBar">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="4dp"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/question1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_image"
+                android:foreground="@drawable/fg_image"
+                android:padding="4dp"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/apple" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/question2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_image"
+                android:foreground="@drawable/fg_image"
+                android:padding="4dp"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/apple" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="4dp"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/question3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_image"
+                android:foreground="@drawable/fg_image"
+                android:padding="4dp"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/beard3" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/question4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_image"
+                android:foreground="@drawable/fg_image"
+                android:padding="4dp"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/gates2" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginHorizontal="12dp"
-        android:layout_marginBottom="16dp">
+        android:layout_marginTop="18dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imagesContainer">
 
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|end"
-            android:background="@drawable/bg_help"
-            android:clickable="true">
-
-            <ImageView
-                android:id="@+id/btnHelp"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:src="@drawable/ic_help"
-                app:tint="@color/white" />
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|start"
+            android:layout_marginEnd="24dp"
             android:background="@drawable/bg_remove"
             android:clickable="true">
 
@@ -280,5 +190,100 @@
                 app:tint="@color/white" />
 
         </FrameLayout>
-    </FrameLayout>
-</FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_help"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/btnHelp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_help"
+                app:tint="@color/white" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/answerButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/container">
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Answer" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/variantButtons1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/variantButtons2"
+        app:layout_constraintTop_toBottomOf="@id/answerButtons"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/variantButtons2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/variantButtons1">
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
+
+        <androidx.appcompat.widget.AppCompatButton style="@style/Button.Variant" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>
