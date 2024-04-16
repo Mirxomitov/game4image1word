@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -28,8 +29,8 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     private lateinit var variantButtons: List<AppCompatButton>
     private lateinit var viewBack: View
     private lateinit var dialogBack: AlertDialog
-    private lateinit var helpButton: ImageView
-    private lateinit var clearButton: ImageView
+    private lateinit var helpButton: FrameLayout
+    private lateinit var clearButton: FrameLayout
     private lateinit var coins: TextView
     private lateinit var level: TextView
     private lateinit var builder: AlertDialog.Builder

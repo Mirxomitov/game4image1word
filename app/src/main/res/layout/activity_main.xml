@@ -173,6 +173,7 @@
         app:layout_constraintTop_toBottomOf="@id/imagesContainer">
 
         <FrameLayout
+            android:id="@+id/btnClear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
@@ -180,7 +181,6 @@
             android:clickable="true">
 
             <ImageView
-                android:id="@+id/btnClear"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
@@ -193,13 +193,13 @@
 
 
         <FrameLayout
+            android:id="@+id/btnHelp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_help"
             android:clickable="true">
 
             <ImageView
-                android:id="@+id/btnHelp"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"

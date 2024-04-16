@@ -1,7 +1,5 @@
 package uz.gita.fourpiconewordkotlin.domain
 
-import android.annotation.SuppressLint
-import android.content.Context
 import uz.gita.fourpiconewordkotlin.R
 import uz.gita.fourpiconewordkotlin.data.model.QuestionData
 import uz.gita.fourpiconewordkotlin.data.source.MyShared
